@@ -1,0 +1,30 @@
+{
+  "name": "name-generator-bot",
+  "version": "1.0.0",
+  "description": "Generates random names for discord users",
+  "main": "src/bot.js",
+  "scripts": {
+    "build": "babel src -d lib --extensions \".ts\"",
+    "start": "npm run build && pm2 start ./lib/bot.js --name name-generator --",
+    "test": "NODE_ENV=test mocha '/**/*.spec.js'"
+  },
+  "keywords": [
+    "discord",
+    "name"
+  ],
+  "author": "Michael May",
+  "license": "ISC",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "wordpos": "^1.2.0",
+    "words-en": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3"
+  }
+}
