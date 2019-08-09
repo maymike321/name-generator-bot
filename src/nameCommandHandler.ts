@@ -6,7 +6,7 @@ const adjectives = readFileSync('adjectives.txt', 'utf8').split('\r\n');
 
 const nameAction: CommandAction = (context, words) => {
     const { user, channelId, commandBot } = context;
-    const usernameToUse = words.length === 0 ? user : words[0];
+    const usernameToUse = words.length === 0 ? user : words.join(' ');
     commandBot.sendMessage({
         to: channelId,
         message: `${usernameToUse} the ${getRandom(adjectives)} ${getRandom(nouns)}`
