@@ -40,7 +40,7 @@ export class CommandBot extends discord.Client {
                     event,
                     commandBot: this};
                 if (message.substring(0, 1) === "!") {
-                    const tokenizedMessage = message.split('\\s+');
+                    const tokenizedMessage = message.match(/\S+/g);
                     const givenCommandName = tokenizedMessage[0].substring(1).toLowerCase();
                     this.commandHandlers.forEach(commandHandler => {
                         const { commandName, commandAction } = commandHandler;
