@@ -9,7 +9,7 @@ const nameAction: CommandAction = (context, words) => {
     const usernameToUse = words.length === 0 ? user : words.join(' ');
     commandBot.sendMessage({
         to: channelId,
-        message: `${usernameToUse} the ${getRandom(adjectives)} ${getRandom(nouns)}`
+        message: `${usernameToUse} the ${capitalize(getRandom(adjectives))} ${capitalize(getRandom(nouns))}`
     });
 }
 
@@ -20,3 +20,5 @@ export const nameCommandHandler: CommandHandler = {
 }
 
 const getRandom = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
+
+const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
