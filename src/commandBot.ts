@@ -30,7 +30,6 @@ export class CommandBot extends discord.Client {
             this.commandHandlers.push(commandHandler);
         };
         this.run = () => {
-            console.log('hi');
             this.on('message', (user, userId, channelId, message, event) => {
                 const messageContext = {
                     user,
@@ -41,6 +40,7 @@ export class CommandBot extends discord.Client {
                     commandBot: this};
                 if (message.substring(0, 1) === "!") {
                     const tokenizedMessage = message.match(/\S+/g);
+                    if (tokenizedMessage == null || tokenizedMessage.length == 0) return;
                     const givenCommandName = tokenizedMessage[0].substring(1).toLowerCase();
                     this.commandHandlers.forEach(commandHandler => {
                         const { commandName, commandAction } = commandHandler;

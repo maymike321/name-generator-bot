@@ -5,12 +5,18 @@ const nouns = readFileSync('nouns.txt', 'utf8').split('\r\n');
 const adjectives = readFileSync('adjectives.txt', 'utf8').split('\r\n');
 
 const nameAction: CommandAction = (context, words) => {
-    const { user, channelId, commandBot } = context;
-    const usernameToUse = words.length === 0 ? user : words.join(' ');
-    commandBot.sendMessage({
-        to: channelId,
-        message: `${usernameToUse} the ${capitalize(getRandom(adjectives))} ${capitalize(getRandom(nouns))}`
-    });
+    try {
+        const { user, channelId, commandBot } = context;
+        const usernameToUse = words.length === 0 ? user : words.join(' ');
+        commandBot.sendMessage({
+            to: channelId,
+            message: `${usernameToUse} the ${capitalize(getRandom(adjectives))} ${capitalize(getRandom(nouns))}`
+        });
+    }
+    catch (e) {
+        console.log(e);
+        throw e;
+    }
 }
 
 export const nameCommandHandler: CommandHandler = {
